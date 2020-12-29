@@ -5,7 +5,7 @@ RUN apt-get update -yqq
 # install some libs
 RUN apt-get install -yqq sudo git zip unzip libzip-dev libpq-dev libjpeg-dev libpng-dev mariadb-client curl libcurl4-gnutls-dev libfreetype6-dev libicu-dev libxml2-dev libonig-dev libsodium-dev
 # install some php extensions
-RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/
 RUN docker-php-ext-install mbstring pdo pdo_mysql pdo_pgsql curl json intl gd xml zip opcache sodium
 RUN pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis
 # install composer 2
